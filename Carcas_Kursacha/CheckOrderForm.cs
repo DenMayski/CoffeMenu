@@ -113,7 +113,10 @@ namespace Carcas_Kursacha
                             DAL.AddOrderItem(Menu, idOrder, "ItemInOrder");
                         if (Offer.Keys.Count > 0)
                             DAL.AddOrderItem(Offer, idOrder, "OfferInOrder");
-                        //CreateDocument(@"Заказ_" + idOrder + ".docx", idOrder, Bonus);
+                        CreateDocument(
+                        Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
+                            "\\Заказ_" + idOrder + ".docx",
+                        idOrder, Bonus);
                     }
                     else
                     {
@@ -126,10 +129,7 @@ namespace Carcas_Kursacha
                     e.Cancel = true;
                 }
             }
-            CreateDocument(
-                Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + 
-                    "\\Заказ_" + 22 + ".docx", 
-                22, 30);
+            
         }
 
 
