@@ -34,9 +34,9 @@ namespace Carcas_Kursacha
             {
                 id = Convert.ToInt32(bnPosItem.Text.ToString() ) - 1;
                 id = id > -1 ? id : 0;
-                lblName.Text = dt.Rows[id][0].ToString();
-                lblComposit.Text = dt.Rows[id][1].ToString();
-                lblPrice.Text = dt.Rows[id][2].ToString();
+                lblName.Text = dt.Rows[id][1].ToString();
+                lblComposit.Text = dt.Rows[id][2].ToString();
+                lblPrice.Text = dt.Rows[id][3].ToString();
                 nudCount.Value = 1;
             }
             catch(Exception ex)
@@ -74,20 +74,9 @@ namespace Carcas_Kursacha
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            string comp = "";
-            foreach (int x in Menu.Keys)
-            {
-                comp += x + " : " + Menu[x] + "\n";
-            }
-            MessageBox.Show(comp);
-            comp = "";
-            foreach (int x in Offer.Keys)
-            {
-                comp += x + " : " + Offer[x] + "\n";
-            }
-            MessageBox.Show(comp);
             Form f = new CheckOrderForm(Menu, Offer);
-            f.ShowDialog(); 
+            f.ShowDialog();
+            this.Close();
         }
     }
 }

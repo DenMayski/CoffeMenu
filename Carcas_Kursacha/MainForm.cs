@@ -26,6 +26,7 @@ namespace Carcas_Kursacha
         {
             btnTables.Visible = false;
             btnSettings.Visible = false;
+            btnAction.Visible = false;
             foreach (Form child in this.MdiChildren)
             {
                 child.Close();
@@ -41,7 +42,7 @@ namespace Carcas_Kursacha
         {
             Form f = new TableForm(DAL.user == "manager" ? "UsersOrders" :
                 "GetUserOrders(" + DAL.idUser + ")" );
-            f.Text = "Orders";
+            f.Text = "Заказы";
             f.MdiParent = this;
             f.Show();
         }
@@ -49,7 +50,7 @@ namespace Carcas_Kursacha
         private void MenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form f = new TableForm("ShortMenu");
-            f.Text = "ShortMenu";
+            f.Text = "Меню";
             f.MdiParent = this;
             f.Show();
         }
@@ -57,6 +58,7 @@ namespace Carcas_Kursacha
         private void ChangeSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form f = new SettingsForm();
+            f.Text = "Настройки";
             f.ShowDialog();
         }
 
@@ -78,14 +80,14 @@ namespace Carcas_Kursacha
             else
             {
                 btnTables.Visible = true;
-                if (DAL.user != "manager")
+                if (DAL.user == "manager")
                 {
-                    btnClients.Visible = false;
+                    btnClients.Visible = true;
                     btnAction.Visible = true;
                 }
                 else
                 {
-                    btnClients.Visible = true;
+                    btnClients.Visible = false;
                     btnAction.Visible = false;
                 }
             }
@@ -95,12 +97,13 @@ namespace Carcas_Kursacha
         private void queryToDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form f = new QueryForm();
+            f.Text = "Запросы к БД";
             f.ShowDialog();
         }
 
         private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form f = new TableForm("Clients");
+            Form f = new TableForm("ClientsInfo");
             f.Text = "Клиенты";
             f.MdiParent = this;
             f.Show();
@@ -108,12 +111,24 @@ namespace Carcas_Kursacha
 
         private void btnNewClient_Click(object sender, EventArgs e)
         {
-            
+            Form f = new UserForm();
+            f.Text = "Регистрация клиента";
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void btnNewOrder_Click(object sender, EventArgs e)
         {
             Form f = new OrderForm();
+            f.Text = "Новый заказ";
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void новоеСпецпредложениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = new TableForm("AvailableOffers");
+            f.Text = "Активные спец предложения";
             f.MdiParent = this;
             f.Show();
         }

@@ -32,12 +32,8 @@ namespace Carcas_Kursacha
             bs.DataSource = dt;
             dgv.DataSource = bs;
             bn.BindingSource = bs;
-            if (tableName == "Orders")
-            {
-                tstbFilter.Visible = false;
-                tsSep.Visible = false;
-                tslblFilter.Visible = false;
-            }
+            if (tableName == "AvailableOffers")
+                dgv.ReadOnly = false;
         }
 
         private string DataGridToCSV()
@@ -108,24 +104,6 @@ namespace Carcas_Kursacha
                         break;
                 }
                 MessageBox.Show("Данные успешно экспортированны");
-            }
-        }
-
-        private void tstbFilter_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (tstbFilter.Text == "")
-                    bs.Filter = string.Empty;
-                else if (dt.Columns[0].DataType.ToString() == "System.String")
-                    bs.Filter = dt.Columns[0].ColumnName +
-                        " LIKE '%" + tstbFilter.Text + "%'";
-                else
-                    bs.Filter = dt.Columns[0].ColumnName + " = " + tstbFilter.Text;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
     }

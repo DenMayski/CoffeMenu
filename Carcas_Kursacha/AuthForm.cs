@@ -20,7 +20,7 @@ namespace Carcas_Kursacha
 
         private void chbViewPassword_CheckedChanged(object sender, EventArgs e)
         {
-            tbPassword.PasswordChar = chbViewPassword.Checked ? '\0' : '*';
+            mtbPassword.PasswordChar = chbViewPassword.Checked ? '\0' : '*';
         }
 
         private void AuthForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -28,7 +28,7 @@ namespace Carcas_Kursacha
             if (this.DialogResult == DialogResult.OK)
             {
                 if (tbLogin.Text == "admin" &&
-                    tbPassword.Text ==
+                    mtbPassword.Text ==
                     Properties.Settings.Default.passwordAdmin)
                 {
                     DAL.user = "admin";
@@ -43,9 +43,10 @@ namespace Carcas_Kursacha
                         DAL.user = chbClient.Checked ? "client" : "manager";
                         conn.Open();
                         string select = "Select * from ";
-                        select += chbClient.Checked ? "Clients WHERE Login = '" + tbLogin.Text + "'":
-                            "Managers WHERE Login = '" + tbLogin.Text + "' " +
-                            "AND Password = '" + tbPassword.Text + "'";
+                        select += chbClient.Checked ? " Clients " : " Managers ";
+                        select += "WHERE Login = '" + tbLogin.Text + "' " +
+                                "AND " + (chbClient.Checked ? "TelephoneNumber " : " Password ")
+                                + "= '" + mtbPassword.Text + "'";
                         DataTable dt = DAL.Select(select);
                         if (dt.Rows.Count > 0)
                         {
@@ -80,8 +81,22 @@ namespace Carcas_Kursacha
 
         private void chbClient_CheckedChanged(object sender, EventArgs e)
         {
-            tbPassword.Enabled = !chbClient.Checked;
-            tbPassword.Clear();
+            mtbPassword.Clear();
+            if (chbClient.Checked)
+            {
+                mtbPassword.Mask = "+7(000) 000-00-00";
+                mtbPassword.PasswordChar = '\0';
+                chbViewPassword.Enabled = false;
+                lblPassword.Text = "Номер\nтелефона";
+            }
+            else
+            {
+                mtbPassword.Mask = "";
+                chbViewPassword.Enabled = true;
+                mtbPassword.PasswordChar = chbViewPassword.Checked ? '\0' : '*';
+                lblPassword.Text = "Пароль";
+            }
+            mtbPassword.Focus();
         }
     }
 }

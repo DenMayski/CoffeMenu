@@ -27,7 +27,10 @@ namespace Carcas_Kursacha
 
         public static DataTable GetTable(string tableName)
         {
-            return Select("SELECT * FROM " + tableName);
+            DataTable dt = new DataTable();
+            dt = Select("SELECT * FROM " + tableName);
+            dt.TableName = tableName;
+            return dt;
         }
 
         public static DataTable Select(string select)
@@ -56,7 +59,7 @@ namespace Carcas_Kursacha
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(cmdText,conn);
+                    SqlCommand cmd = new SqlCommand(cmdText, conn);
                     cmd.ExecuteNonQuery();
                 }
                 catch (SqlException ex)
@@ -66,7 +69,62 @@ namespace Carcas_Kursacha
             }
         }
 
-        public static string user;  //НАЧАЛ ОТ СЮДА ЗАКОНЧИЛ НА ВКЛАДКЕ НАСТРОЙКА
+        public static void AddClient(string FN, string SN, string Log, int Bonuses, string Phone)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("AddClient", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlParameter firstName = new SqlParameter("@FN", FN);
+                    SqlParameter secondName = new SqlParameter("@SN", SN);
+                    SqlParameter login = new SqlParameter("@Log", Log);
+                    SqlParameter bonuses = new SqlParameter("@Bonuses", Bonuses);
+                    SqlParameter phone = new SqlParameter("@Phone", Phone);
+                    cmd.Parameters.AddRange(new[] { firstName, secondName, login, bonuses, phone });
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        public static int AddOrder(int idClient, int Bonus)
+        {
+            string cmd = String.Format("INSERT INTO Orders (BonusPayed, idClient) " +
+                            "VALUES ({0}, {1})", Bonus, idClient);
+            ExecuteCommand(cmd);
+            DataTable dt = GetTable("Orders");
+            return Convert.ToInt32(dt.Rows[dt.Rows.Count - 1]["idOrder"]);
+        }
+
+        public static void AddOrderItem(Dictionary<int, int> comp, int idOrder, string table)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnString))
+            {
+                try
+                {
+                    conn.Open();
+                    string insert = "INSERT INTO " + table + " VALUES ";
+                    foreach(int idItem in comp.Keys)
+                    {
+                        insert += "(" + idItem + ", " + idOrder + ", " + comp[idItem] + "),";
+                    }
+                    insert = insert.Substring(0, insert.Length - 1);
+                    ExecuteCommand(insert);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        
+        public static string user; 
         public static string idUser;
     }
 }

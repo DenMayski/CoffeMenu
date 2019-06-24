@@ -25,7 +25,7 @@ namespace Carcas_Kursacha
             for (int i = 0; i < commands.Count; i++)
             {
                 commands[i] = commands[i].Trim();
-                if (commands[i] != "" && commands[i].Split(' ').Length > 2)
+                if (commands[i] != "" && commands[i].Split(' ').Length > 1)
                 {
                     string first = commands[i].Substring(0, commands[i].IndexOf(' ')).ToLower();
                     string second = commands[i].Substring(
@@ -36,10 +36,12 @@ namespace Carcas_Kursacha
                             dgv.DataSource = DAL.Select(commands[i]);
                         else
                             DAL.ExecuteCommand(commands[i]);
+                        tsslbl.Text = "Команда выполнена";
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
+                        tsslbl.Text = "Команда содержит ошибки";
                     }
                 }
             }
@@ -49,7 +51,7 @@ namespace Carcas_Kursacha
         {
             tbCmdText.Text = "";
             dgv.Columns.Clear();
-
+            tsslbl.Text = "Файл создан";
         }
 
         private void tsmiOpen_Click(object sender, EventArgs e)
@@ -60,6 +62,7 @@ namespace Carcas_Kursacha
             {
                 tbCmdText.Text = File.ReadAllText(ofd.FileName);
                 dgv.Columns.Clear();
+                tsslbl.Text = "Файл открыт";
             }
         }
 
@@ -70,6 +73,7 @@ namespace Carcas_Kursacha
             if (sfd.ShowDialog() != DialogResult.Cancel)
             {
                 File.WriteAllText(sfd.FileName, tbCmdText.Text);
+                tsslbl.Text = "Файл сохранен";
             }
         }
     }

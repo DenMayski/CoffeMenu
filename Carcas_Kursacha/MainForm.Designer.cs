@@ -44,6 +44,7 @@
             this.btnAction = new System.Windows.Forms.ToolStripMenuItem();
             this.btnNewOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.btnNewClient = new System.Windows.Forms.ToolStripMenuItem();
+            this.новоеСпецпредложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,21 +109,21 @@
             // btnMenu
             // 
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(137, 22);
+            this.btnMenu.Size = new System.Drawing.Size(180, 22);
             this.btnMenu.Text = "Меню";
             this.btnMenu.Click += new System.EventHandler(this.MenuToolStripMenuItem_Click);
             // 
             // btnOrders
             // 
             this.btnOrders.Name = "btnOrders";
-            this.btnOrders.Size = new System.Drawing.Size(137, 22);
+            this.btnOrders.Size = new System.Drawing.Size(180, 22);
             this.btnOrders.Text = "Заказы";
             this.btnOrders.Click += new System.EventHandler(this.OrdersToolStripMenuItem_Click);
             // 
             // btnClients
             // 
             this.btnClients.Name = "btnClients";
-            this.btnClients.Size = new System.Drawing.Size(137, 22);
+            this.btnClients.Size = new System.Drawing.Size(180, 22);
             this.btnClients.Text = "Клиенты";
             this.btnClients.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
             // 
@@ -155,7 +156,8 @@
             // 
             this.btnAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnNewOrder,
-            this.btnNewClient});
+            this.btnNewClient,
+            this.новоеСпецпредложениеToolStripMenuItem});
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(89, 22);
             this.btnAction.Text = "Действия";
@@ -163,16 +165,23 @@
             // btnNewOrder
             // 
             this.btnNewOrder.Name = "btnNewOrder";
-            this.btnNewOrder.Size = new System.Drawing.Size(180, 22);
+            this.btnNewOrder.Size = new System.Drawing.Size(257, 22);
             this.btnNewOrder.Text = "Новый заказ";
             this.btnNewOrder.Click += new System.EventHandler(this.btnNewOrder_Click);
             // 
             // btnNewClient
             // 
             this.btnNewClient.Name = "btnNewClient";
-            this.btnNewClient.Size = new System.Drawing.Size(180, 22);
+            this.btnNewClient.Size = new System.Drawing.Size(257, 22);
             this.btnNewClient.Text = "Новый клиент";
             this.btnNewClient.Click += new System.EventHandler(this.btnNewClient_Click);
+            // 
+            // новоеСпецпредложениеToolStripMenuItem
+            // 
+            this.новоеСпецпредложениеToolStripMenuItem.Name = "новоеСпецпредложениеToolStripMenuItem";
+            this.новоеСпецпредложениеToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.новоеСпецпредложениеToolStripMenuItem.Text = "Новое спецпредложение";
+            this.новоеСпецпредложениеToolStripMenuItem.Click += new System.EventHandler(this.новоеСпецпредложениеToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -215,6 +224,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnAction;
         private System.Windows.Forms.ToolStripMenuItem btnNewOrder;
         private System.Windows.Forms.ToolStripMenuItem btnNewClient;
+        private System.Windows.Forms.ToolStripMenuItem новоеСпецпредложениеToolStripMenuItem;
     }
 }
 

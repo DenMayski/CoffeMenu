@@ -40,9 +40,6 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.tsSep = new System.Windows.Forms.ToolStripSeparator();
-            this.tslblFilter = new System.Windows.Forms.ToolStripLabel();
-            this.tstbFilter = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExportCSV = new System.Windows.Forms.ToolStripButton();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
@@ -67,9 +64,6 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.tsSep,
-            this.tslblFilter,
-            this.tstbFilter,
-            this.toolStripSeparator1,
             this.btnExportCSV});
             this.bn.Location = new System.Drawing.Point(0, 0);
             this.bn.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
@@ -78,7 +72,7 @@
             this.bn.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bn.Name = "bn";
             this.bn.PositionItem = this.bindingNavigatorPositionItem;
-            this.bn.Size = new System.Drawing.Size(542, 25);
+            this.bn.Size = new System.Drawing.Size(484, 25);
             this.bn.TabIndex = 0;
             this.bn.Text = "bindingNavigator1";
             // 
@@ -149,23 +143,6 @@
             this.tsSep.Name = "tsSep";
             this.tsSep.Size = new System.Drawing.Size(6, 25);
             // 
-            // tslblFilter
-            // 
-            this.tslblFilter.Name = "tslblFilter";
-            this.tslblFilter.Size = new System.Drawing.Size(51, 22);
-            this.tslblFilter.Text = "Фильтр:";
-            // 
-            // tstbFilter
-            // 
-            this.tstbFilter.Name = "tstbFilter";
-            this.tstbFilter.Size = new System.Drawing.Size(100, 25);
-            this.tstbFilter.TextChanged += new System.EventHandler(this.tstbFilter_TextChanged);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnExportCSV
             // 
             this.btnExportCSV.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -178,7 +155,6 @@
             // 
             // dgv
             // 
-            this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToOrderColumns = true;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -186,17 +162,19 @@
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(0, 25);
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(542, 425);
+            this.dgv.ReadOnly = true;
+            this.dgv.Size = new System.Drawing.Size(484, 256);
             this.dgv.TabIndex = 1;
             // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 450);
+            this.ClientSize = new System.Drawing.Size(484, 281);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.bn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(500, 250);
             this.Name = "TableForm";
             this.Text = "TableForm";
             this.Load += new System.EventHandler(this.TableForm_Load);
@@ -224,9 +202,6 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.BindingSource bs;
         private System.Windows.Forms.ToolStripButton btnExportCSV;
-        private System.Windows.Forms.ToolStripTextBox tstbFilter;
-        private System.Windows.Forms.ToolStripLabel tslblFilter;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator tsSep;
     }
 }

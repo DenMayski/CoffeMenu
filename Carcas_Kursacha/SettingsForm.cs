@@ -38,7 +38,6 @@ namespace Carcas_Kursacha
                     Properties.Settings.Default.password = tbPassword.Text;
                     Properties.Settings.Default.db = tbDataBase.Text;
                     Properties.Settings.Default.passwordAdmin = tbAdmin.Text;
-                    Properties.Settings.Default.passwordAdmin = tbAdmin.Text;
                     Properties.Settings.Default.Save();
                 }
             }

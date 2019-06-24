@@ -74,6 +74,7 @@
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(3, 161);
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
             this.dgv.Size = new System.Drawing.Size(534, 153);
             this.dgv.TabIndex = 0;
             // 
@@ -334,10 +335,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(540, 342);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bn);
             this.Name = "OrderForm";
+            this.ShowIcon = false;
             this.Text = "Оформление заказа";
             this.Load += new System.EventHandler(this.ProfileForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

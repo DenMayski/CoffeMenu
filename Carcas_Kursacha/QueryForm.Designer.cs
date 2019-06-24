@@ -38,9 +38,12 @@
             this.tsOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.tsSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsExecute = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsslbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -53,9 +56,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 29);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(384, 233);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -67,9 +69,9 @@
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv.Location = new System.Drawing.Point(3, 96);
+            this.dgv.Location = new System.Drawing.Point(3, 107);
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(378, 134);
+            this.dgv.Size = new System.Drawing.Size(378, 123);
             this.dgv.TabIndex = 3;
             // 
             // tbCmdText
@@ -79,7 +81,7 @@
             this.tbCmdText.Location = new System.Drawing.Point(3, 3);
             this.tbCmdText.Multiline = true;
             this.tbCmdText.Name = "tbCmdText";
-            this.tbCmdText.Size = new System.Drawing.Size(378, 87);
+            this.tbCmdText.Size = new System.Drawing.Size(378, 98);
             this.tbCmdText.TabIndex = 4;
             // 
             // menuStrip1
@@ -140,11 +142,27 @@
             this.tsExecute.Text = "Выполнить";
             this.tsExecute.Click += new System.EventHandler(this.tsExecute_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslbl});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 240);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(384, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsslbl
+            // 
+            this.tsslbl.Name = "tsslbl";
+            this.tsslbl.Size = new System.Drawing.Size(0, 17);
+            // 
             // QueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 262);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -157,6 +175,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +193,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsOpen;
         private System.Windows.Forms.ToolStripMenuItem tsSave;
         private System.Windows.Forms.ToolStripMenuItem tsExecute;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tsslbl;
     }
 }

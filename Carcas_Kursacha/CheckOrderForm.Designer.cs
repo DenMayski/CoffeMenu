@@ -32,18 +32,19 @@
             this.dgv = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnChange = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.bs = new System.Windows.Forms.BindingSource(this.components);
+            this.btnOk = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtbPhone = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblCost = new System.Windows.Forms.Label();
+            this.bs = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv
@@ -79,13 +80,11 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Controls.Add(this.btnCancel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnOk, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnChange, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnCancel, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 151);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -94,90 +93,100 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(565, 112);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancel.Location = new System.Drawing.Point(285, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(277, 106);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "Отмена";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOk.Location = new System.Drawing.Point(3, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(182, 106);
+            this.btnOk.Size = new System.Drawing.Size(276, 106);
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "Подтвердить";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
-            // btnChange
-            // 
-            this.btnChange.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnChange.Location = new System.Drawing.Point(191, 3);
-            this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(182, 106);
-            this.btnChange.TabIndex = 1;
-            this.btnChange.Text = "Изменить";
-            this.btnChange.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(379, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(183, 106);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Отмена";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.43363F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.56637F));
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.maskedTextBox1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.mtbPhone, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lblCost, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 121);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(565, 24);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 24);
+            this.label1.Size = new System.Drawing.Size(140, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Введите номер телефона:";
             // 
-            // maskedTextBox1
+            // mtbPhone
             // 
-            this.maskedTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.maskedTextBox1.Location = new System.Drawing.Point(157, 3);
-            this.maskedTextBox1.Mask = "+7(000) 000-00-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(405, 20);
-            this.maskedTextBox1.TabIndex = 1;
+            this.mtbPhone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mtbPhone.Location = new System.Drawing.Point(153, 3);
+            this.mtbPhone.Mask = "+7(000) 000-00-00";
+            this.mtbPhone.Name = "mtbPhone";
+            this.mtbPhone.Size = new System.Drawing.Size(132, 20);
+            this.mtbPhone.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(291, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Стоимость заказа:";
+            // 
+            // lblCost
+            // 
+            this.lblCost.AutoSize = true;
+            this.lblCost.Location = new System.Drawing.Point(429, 0);
+            this.lblCost.Name = "lblCost";
+            this.lblCost.Size = new System.Drawing.Size(35, 13);
+            this.lblCost.TabIndex = 3;
+            this.lblCost.Text = "label3";
             // 
             // CheckOrderForm
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(571, 266);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "CheckOrderForm";
+            this.ShowIcon = false;
             this.Text = "Потдверждение заказа";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckOrderForm_FormClosing);
             this.Load += new System.EventHandler(this.CheckOrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,10 +198,11 @@
         private System.Windows.Forms.BindingSource bs;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnChange;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtbPhone;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCost;
     }
 }
