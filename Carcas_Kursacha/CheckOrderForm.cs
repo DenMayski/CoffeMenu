@@ -126,15 +126,19 @@ namespace Carcas_Kursacha
                     e.Cancel = true;
                 }
             }
-            //CreateDocument(@"c:\Заказ_" + 22 + ".docx", 22, 30);
-            
+            CreateDocument(
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + 
+                    "\\Заказ_" + 22 + ".docx", 
+                22, 30);
         }
+
+
 
         private void CreateDocument(object fileName, int idOrder, int Bonus)
         {
             try
             {
-                string patternName = "";
+                string patternName = @"..\..\Resources\Sample.docx";
 
                 File.Copy(patternName, fileName.ToString(), true);
                 Word.Application word = new Word.Application();
@@ -145,7 +149,7 @@ namespace Carcas_Kursacha
                 replace.Add("%date%", DateTime.Today.ToShortDateString());
                 replace.Add("%res%", lblCost.Text);
                 replace.Add("%bon%", Bonus.ToString());
-                replace.Add("%tot%", (Convert.ToDouble(lblCost.Text) - Bonus).ToString());
+                replace.Add("%tot%", String.Format("{0:0.00}",Convert.ToDouble(lblCost.Text) - Bonus));
                 replace.Add("%n%", dgv.RowCount.ToString());
                 replace.Add("%fulldate%", DateTime.Now.ToString());
 
