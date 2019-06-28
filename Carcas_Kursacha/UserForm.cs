@@ -25,21 +25,29 @@ namespace Carcas_Kursacha
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            tbFirstName.Text.Trim();
-            tbSecondName.Text.Trim();
-            tbLogin.Text.Trim();
-            Regex reg = new Regex("^([а-яА-Я]+)(-[а-яА-Я]+)*$", RegexOptions.IgnoreCase);
-
-            if (reg.IsMatch(tbFirstName.Text) && reg.IsMatch(tbSecondName.Text))
+            Regex reg = new Regex("^([а-яё]+)(-[а-яё]+)*$", RegexOptions.IgnoreCase);
+            string name = tbFirstName.Text.Trim().ToLower();
+            string surname = tbSecondName.Text.Trim().ToLower();
+           
+            if (reg.IsMatch(name) && reg.IsMatch(surname) 
+                && name.Length > 1 && surname.Length > 1)
             {
-                if (tbLogin.Text != "" && mtbPhone.MaskCompleted)
+                name = FormatName(name);
+                surname = FormatName(surname);
+                if (!String.IsNullOrWhiteSpace(tbLogin.Text) && mtbPhone.MaskCompleted)
                 {
                     try
                     {
-                        DAL.AddClient(tbFirstName.Text, tbSecondName.Text,
-                            tbLogin.Text, Convert.ToInt32(nudBonuses.Value), mtbPhone.Text);
-                        MessageBox.Show("Пользователь добавлен");
-                        this.Close();
+                        if (DAL.AddClient(name, surname, tbLogin.Text,
+                            Convert.ToInt32(nudBonuses.Value), mtbPhone.Text))
+                        {
+                            MessageBox.Show("Пользователь добавлен");
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Пользователь уже существует");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -53,6 +61,19 @@ namespace Carcas_Kursacha
             {
                 MessageBox.Show("Имя и фамлия должны быть введены на русском языке");
             }
+        }
+
+        private static string FormatName(string name)
+        {
+            name = Char.ToUpper(name[0]) + name.Substring(1);
+            int x = name.IndexOf('-');
+            while (x > 0)
+            {
+                name = name.Substring(0, x + 1) + Char.ToUpper(name[x + 1]) +
+                    name.Substring(x + 2);
+                x = name.IndexOf('-', x + 1);
+            }
+            return name;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

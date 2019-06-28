@@ -25,6 +25,7 @@ namespace Carcas_Kursacha
             bs.DataSource = dt;
             bn.BindingSource = bs;
             dgv.DataSource = bs;
+            dgv.Columns[0].Visible = false;
         }
 
         int id;
@@ -47,27 +48,46 @@ namespace Carcas_Kursacha
 
         public Dictionary<int, int> Menu = new Dictionary<int, int>();
         public Dictionary<int, int> Offer = new Dictionary<int, int>();
+        public Dictionary<string, int> Composit = new Dictionary<string, int>();
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            btnCheckOrder.Enabled = true;
             int key, count;
             key = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value.ToString());
             count = (int)nudCount.Value;
+            string name = dgv.CurrentRow.Cells[1].Value.ToString();
+            if (Composit.ContainsKey(name))
+                if (count > 0)
+                    Composit[name] = count;
+                else
+                    Composit.Remove(name);
+            else
+                Composit.Add(name, count);
             if (dgv.CurrentRow.Cells[dgv.ColumnCount - 1].Value.ToString() == "Обычное меню")
             {
-                InsertInto(Menu, key, count);
+                InsertInto(Menu, key, count);   
             }
             else
             {
                 InsertInto(Offer, key, count);
             }
+            string comp = "";
+            foreach(string namePos in Composit.Keys)
+                comp += String.Format("{0} - {1} шт;  ", namePos, Composit[namePos]);
+            tbComp.Text = comp;
+            
+                
+            
+            btnCheckOrder.Enabled = true;
         }
 
         private void InsertInto(Dictionary<int, int> Dict, int key, int count)
         {
             if (Dict.ContainsKey(key))
-                Dict[key] += count;
+                if (count > 0)
+                    Dict[key] = count;
+                else
+                    Dict.Remove(key);
             else
                 Dict.Add(key, count);
         }
@@ -75,8 +95,8 @@ namespace Carcas_Kursacha
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             Form f = new CheckOrderForm(Menu, Offer);
-            f.ShowDialog();
-            this.Close();
+            if (f.ShowDialog() == DialogResult.OK)
+                this.Close();
         }
     }
 }

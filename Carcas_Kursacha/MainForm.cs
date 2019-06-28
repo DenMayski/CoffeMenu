@@ -112,7 +112,6 @@ namespace Carcas_Kursacha
         private void btnNewClient_Click(object sender, EventArgs e)
         {
             Form f = new UserForm();
-            f.Text = "Регистрация клиента";
             f.MdiParent = this;
             f.Show();
         }

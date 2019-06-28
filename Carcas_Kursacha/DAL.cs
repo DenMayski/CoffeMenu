@@ -69,37 +69,51 @@ namespace Carcas_Kursacha
             }
         }
 
-        public static void AddClient(string FN, string SN, string Log, int Bonuses, string Phone)
+        public static bool AddClient(string FN, string SN, string Log, int Bonuses, string Phone)
         {
-            using (SqlConnection conn = new SqlConnection(ConnString))
-            {
-                try
+            DataTable dt = DAL.Select("SELECT * FROM Clients WHERE [FirstName] = '" + FN + "' AND [SecondName] = '" +
+                SN + "' AND [TelephoneNumber] = '" + Phone + "'");
+            if (dt.Rows.Count == 0)
+                using (SqlConnection conn = new SqlConnection(ConnString))
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("AddClient", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    SqlParameter firstName = new SqlParameter("@FN", FN);
-                    SqlParameter secondName = new SqlParameter("@SN", SN);
-                    SqlParameter login = new SqlParameter("@Log", Log);
-                    SqlParameter bonuses = new SqlParameter("@Bonuses", Bonuses);
-                    SqlParameter phone = new SqlParameter("@Phone", Phone);
-                    cmd.Parameters.AddRange(new[] { firstName, secondName, login, bonuses, phone });
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand("AddClient", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        SqlParameter firstName = new SqlParameter("@FN", FN);
+                        SqlParameter secondName = new SqlParameter("@SN", SN);
+                        SqlParameter login = new SqlParameter("@Log", Log);
+                        SqlParameter bonuses = new SqlParameter("@Bonuses", Bonuses);
+                        SqlParameter phone = new SqlParameter("@Phone", Phone);
+                        cmd.Parameters.AddRange(new[] { firstName, secondName, login, bonuses, phone });
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+           return false;
         }
 
         public static int AddOrder(int idClient, int Bonus)
         {
-            string cmd = String.Format("INSERT INTO Orders (BonusPayed, idClient) " +
-                            "VALUES ({0}, {1})", Bonus, idClient);
-            ExecuteCommand(cmd);
-            DataTable dt = GetTable("Orders");
-            return Convert.ToInt32(dt.Rows[dt.Rows.Count - 1]["idOrder"]);
+            int exit = -1;
+            try
+            {
+                string cmd = String.Format("INSERT INTO Orders (BonusPayed, idClient) " +
+                                "VALUES ({0}, {1})", Bonus, idClient);
+                ExecuteCommand(cmd);
+                DataTable dt = GetTable("Orders");
+                exit = Convert.ToInt32(dt.Rows[dt.Rows.Count - 1]["idOrder"]);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return exit;
         }
 
         public static void AddOrderItem(Dictionary<int, int> comp, int idOrder, string table)
@@ -121,6 +135,22 @@ namespace Carcas_Kursacha
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        public static void UpdateTable(DataSet ds)
+        {
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM AvailableOffers", DAL.ConnString);
+                SqlCommandBuilder scb = new SqlCommandBuilder(da);
+
+                da.UpdateCommand = scb.GetUpdateCommand();
+                da.Update(ds, ds.Tables[0].TableName);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         

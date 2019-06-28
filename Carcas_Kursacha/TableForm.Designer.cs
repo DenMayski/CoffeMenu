@@ -155,7 +155,6 @@
             // 
             // dgv
             // 
-            this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToOrderColumns = true;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -177,6 +176,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 250);
             this.Name = "TableForm";
             this.Text = "TableForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TableForm_FormClosing);
             this.Load += new System.EventHandler(this.TableForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bn)).EndInit();
             this.bn.ResumeLayout(false);

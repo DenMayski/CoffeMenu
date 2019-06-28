@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace Carcas_Kursacha
 {
@@ -15,6 +16,7 @@ namespace Carcas_Kursacha
     {
         string tableName;
         DataTable dt;
+        DataSet ds = new DataSet();
 
         public TableForm()
         {
@@ -29,11 +31,21 @@ namespace Carcas_Kursacha
         private void TableForm_Load(object sender, EventArgs e)
         {
             dt = DAL.GetTable(tableName);
+            System.Data.SqlClient.SqlDataAdapter da =
+                new System.Data.SqlClient.SqlDataAdapter("SELECT * FROM " + tableName, DAL.ConnString);
+            da.Fill(ds);
+
             bs.DataSource = dt;
-            dgv.DataSource = bs;
+
+            dgv.DataSource = ds.Tables[0];
             bn.BindingSource = bs;
+            dgv.Columns[0].Visible = false;
             if (tableName == "AvailableOffers")
+            {
                 dgv.ReadOnly = false;
+                dgv.AllowUserToAddRows = true;
+                dgv.AllowUserToDeleteRows = true;
+            }
         }
 
         private string DataGridToCSV()
@@ -105,6 +117,14 @@ namespace Carcas_Kursacha
                 }
                 MessageBox.Show("Данные успешно экспортированны");
             }
+        }
+
+        private void TableForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Validate();
+            this.bs.EndEdit();
+            if (tableName == "AvailableOffers")
+                DAL.UpdateTable(ds);
         }
     }
 }
