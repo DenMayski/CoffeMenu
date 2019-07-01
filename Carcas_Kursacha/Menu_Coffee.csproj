@@ -6,12 +6,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0DB28DA6-F231-4D56-90C4-EAEDAA999F82}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Carcas_Kursacha</RootNamespace>
-    <AssemblyName>Carcas_Kursacha</AssemblyName>
+    <RootNamespace>Menu_Coffee</RootNamespace>
+    <AssemblyName>Menu_Coffe</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -46,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>coffee-bean_icon-icons.com_61176.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -213,6 +216,7 @@
     <None Include="Resources\coffee.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="coffee-bean_icon-icons.com_61176.ico" />
     <Content Include="Resources\1458264596_authorisation_lock_padlock_safe_password_privacy_security_icon-icons.com_55333.ico" />
     <Content Include="Resources\1486564730-gears-cogs_81537.ico" />
     <Content Include="Resources\coffee-bean_icon-icons.com_61176.ico" />

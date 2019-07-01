@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Carcas_Kursacha
+namespace Menu_Coffee
 {
     static class Program
     {

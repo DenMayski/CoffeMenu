@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace Carcas_Kursacha
+namespace Menu_Coffee
 {
     public partial class QueryForm : Form
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Carcas_Kursacha.Properties {
+namespace Menu_Coffee.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

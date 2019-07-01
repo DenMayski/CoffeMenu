@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
 using System.IO;
 
-namespace Carcas_Kursacha
+namespace Menu_Coffee
 {
     public partial class CheckOrderForm : Form
     {

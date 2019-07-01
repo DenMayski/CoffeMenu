@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
 
-namespace Carcas_Kursacha
+namespace Menu_Coffee
 {
     public partial class TableForm : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace Carcas_Kursacha
+﻿namespace Menu_Coffee
 {
     partial class MainForm
     {
@@ -188,7 +188,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.BackgroundImage = global::Carcas_Kursacha.Properties.Resources.coffee;
+            this.BackgroundImage = global::Menu_Coffee.Properties.Resources.coffee;
             this.ClientSize = new System.Drawing.Size(1056, 623);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

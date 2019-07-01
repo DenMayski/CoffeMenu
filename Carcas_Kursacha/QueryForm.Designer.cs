@@ -1,4 +1,4 @@
-﻿namespace Carcas_Kursacha
+﻿namespace Menu_Coffee
 {
     partial class QueryForm
     {
