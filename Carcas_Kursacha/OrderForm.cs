@@ -56,13 +56,13 @@ namespace Carcas_Kursacha
             key = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value.ToString());
             count = (int)nudCount.Value;
             string name = dgv.CurrentRow.Cells[1].Value.ToString();
-            if (Composit.ContainsKey(name))
-                if (count > 0)
-                    Composit[name] = count;
+                //Если элемент находится в таблице и количество больше 0
+                if (Composit.ContainsKey(name) && count > 0)
+                    Composit[name] = count; //измени количество на новое значение
+                else if (count == 0)        //иначе если количество 0
+                    Composit.Remove(name);  //удали
                 else
-                    Composit.Remove(name);
-            else
-                Composit.Add(name, count);
+                    Composit.Add(name, count);//иначе добавь
             if (dgv.CurrentRow.Cells[dgv.ColumnCount - 1].Value.ToString() == "Обычное меню")
             {
                 InsertInto(Menu, key, count);   
@@ -76,23 +76,20 @@ namespace Carcas_Kursacha
                 comp += String.Format("{0} - {1} шт;  ", namePos, Composit[namePos]);
             tbComp.Text = comp;
             
-                
-            
-            btnCheckOrder.Enabled = true;
+            btnCheckOrder.Enabled = tbComp.Text.Length > 0;
         }
 
         private void InsertInto(Dictionary<int, int> Dict, int key, int count)
         {
-            if (Dict.ContainsKey(key))
-                if (count > 0)
-                    Dict[key] = count;
-                else
-                    Dict.Remove(key);
+            if (Dict.ContainsKey(key) && count > 0)
+                Dict[key] = count;
+            else if (count == 0)
+                Dict.Remove(key);
             else
                 Dict.Add(key, count);
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void CheckOrdbtn_Click(object sender, EventArgs e)
         {
             Form f = new CheckOrderForm(Menu, Offer);
             if (f.ShowDialog() == DialogResult.OK)

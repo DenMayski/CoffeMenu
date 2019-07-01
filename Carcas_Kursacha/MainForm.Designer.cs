@@ -40,11 +40,11 @@
             this.btnClients = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btnChangeSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.queryToDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnqueryToDB = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAction = new System.Windows.Forms.ToolStripMenuItem();
             this.btnNewOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.btnNewClient = new System.Windows.Forms.ToolStripMenuItem();
-            this.новоеСпецпредложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOffer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,14 +125,14 @@
             this.btnClients.Name = "btnClients";
             this.btnClients.Size = new System.Drawing.Size(180, 22);
             this.btnClients.Text = "Клиенты";
-            this.btnClients.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
+            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
             // 
             // btnSettings
             // 
             this.btnSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnChangeSettings,
-            this.queryToDBToolStripMenuItem});
+            this.btnqueryToDB});
             this.btnSettings.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(96, 22);
@@ -141,23 +141,23 @@
             // btnChangeSettings
             // 
             this.btnChangeSettings.Name = "btnChangeSettings";
-            this.btnChangeSettings.Size = new System.Drawing.Size(178, 22);
+            this.btnChangeSettings.Size = new System.Drawing.Size(180, 22);
             this.btnChangeSettings.Text = "Изменить";
             this.btnChangeSettings.Click += new System.EventHandler(this.ChangeSettingsToolStripMenuItem_Click);
             // 
-            // queryToDBToolStripMenuItem
+            // btnqueryToDB
             // 
-            this.queryToDBToolStripMenuItem.Name = "queryToDBToolStripMenuItem";
-            this.queryToDBToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.queryToDBToolStripMenuItem.Text = "Запросы к БД";
-            this.queryToDBToolStripMenuItem.Click += new System.EventHandler(this.queryToDBToolStripMenuItem_Click);
+            this.btnqueryToDB.Name = "btnqueryToDB";
+            this.btnqueryToDB.Size = new System.Drawing.Size(180, 22);
+            this.btnqueryToDB.Text = "Запросы к БД";
+            this.btnqueryToDB.Click += new System.EventHandler(this.btnQueryToDB_Click);
             // 
             // btnAction
             // 
             this.btnAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnNewOrder,
             this.btnNewClient,
-            this.новоеСпецпредложениеToolStripMenuItem});
+            this.btnOffer});
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(89, 22);
             this.btnAction.Text = "Действия";
@@ -165,32 +165,34 @@
             // btnNewOrder
             // 
             this.btnNewOrder.Name = "btnNewOrder";
-            this.btnNewOrder.Size = new System.Drawing.Size(257, 22);
+            this.btnNewOrder.Size = new System.Drawing.Size(329, 22);
             this.btnNewOrder.Text = "Новый заказ";
             this.btnNewOrder.Click += new System.EventHandler(this.btnNewOrder_Click);
             // 
             // btnNewClient
             // 
             this.btnNewClient.Name = "btnNewClient";
-            this.btnNewClient.Size = new System.Drawing.Size(257, 22);
+            this.btnNewClient.Size = new System.Drawing.Size(329, 22);
             this.btnNewClient.Text = "Новый клиент";
             this.btnNewClient.Click += new System.EventHandler(this.btnNewClient_Click);
             // 
-            // новоеСпецпредложениеToolStripMenuItem
+            // btnOffer
             // 
-            this.новоеСпецпредложениеToolStripMenuItem.Name = "новоеСпецпредложениеToolStripMenuItem";
-            this.новоеСпецпредложениеToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
-            this.новоеСпецпредложениеToolStripMenuItem.Text = "Новое спецпредложение";
-            this.новоеСпецпредложениеToolStripMenuItem.Click += new System.EventHandler(this.новоеСпецпредложениеToolStripMenuItem_Click);
+            this.btnOffer.Name = "btnOffer";
+            this.btnOffer.Size = new System.Drawing.Size(329, 22);
+            this.btnOffer.Text = "Редактирование спецпредложений";
+            this.btnOffer.Click += new System.EventHandler(this.btnNewOffer_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Carcas_Kursacha.Properties.Resources._4kaeyI;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackgroundImage = global::Carcas_Kursacha.Properties.Resources.coffee;
             this.ClientSize = new System.Drawing.Size(1056, 623);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -219,12 +221,12 @@
         private System.Windows.Forms.ToolStripMenuItem btnMenu;
         private System.Windows.Forms.ToolStripMenuItem btnSettings;
         private System.Windows.Forms.ToolStripMenuItem btnChangeSettings;
-        private System.Windows.Forms.ToolStripMenuItem queryToDBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnqueryToDB;
         private System.Windows.Forms.ToolStripMenuItem btnClients;
         private System.Windows.Forms.ToolStripMenuItem btnAction;
         private System.Windows.Forms.ToolStripMenuItem btnNewOrder;
         private System.Windows.Forms.ToolStripMenuItem btnNewClient;
-        private System.Windows.Forms.ToolStripMenuItem новоеСпецпредложениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnOffer;
     }
 }
 

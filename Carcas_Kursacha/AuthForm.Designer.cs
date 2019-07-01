@@ -63,7 +63,6 @@
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(221, 20);
             this.tbLogin.TabIndex = 2;
-            this.tbLogin.Text = "Elena";
             this.tbLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLoginAndPassword_KeyPress);
             // 
             // chbViewPassword
@@ -115,7 +114,6 @@
             this.mtbPassword.PasswordChar = '*';
             this.mtbPassword.Size = new System.Drawing.Size(221, 20);
             this.mtbPassword.TabIndex = 3;
-            this.mtbPassword.Text = "123456";
             this.mtbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLoginAndPassword_KeyPress);
             // 
             // AuthForm
@@ -124,7 +122,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(334, 156);
+            this.ClientSize = new System.Drawing.Size(334, 152);
             this.Controls.Add(this.mtbPassword);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);

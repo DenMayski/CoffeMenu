@@ -18,50 +18,7 @@ namespace Carcas_Kursacha
             InitializeComponent();
         }
 
-        private void UserForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            Regex reg = new Regex("^([а-яё]+)(-[а-яё]+)*$", RegexOptions.IgnoreCase);
-            string name = tbFirstName.Text.Trim().ToLower();
-            string surname = tbSecondName.Text.Trim().ToLower();
-           
-            if (reg.IsMatch(name) && reg.IsMatch(surname) 
-                && name.Length > 1 && surname.Length > 1)
-            {
-                name = FormatName(name);
-                surname = FormatName(surname);
-                if (!String.IsNullOrWhiteSpace(tbLogin.Text) && mtbPhone.MaskCompleted)
-                {
-                    try
-                    {
-                        if (DAL.AddClient(name, surname, tbLogin.Text,
-                            Convert.ToInt32(nudBonuses.Value), mtbPhone.Text))
-                        {
-                            MessageBox.Show("Пользователь добавлен");
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Пользователь уже существует");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                else
-                    MessageBox.Show("Введите логин и номер телефона");
-            }
-            else
-            {
-                MessageBox.Show("Имя и фамлия должны быть введены на русском языке");
-            }
-        }
+        
 
         private static string FormatName(string name)
         {
@@ -79,6 +36,54 @@ namespace Carcas_Kursacha
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void UserForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(this.DialogResult == DialogResult.OK)
+            {
+                Regex reg = new Regex("^([а-яё]+)(-[а-яё]+)*$", RegexOptions.IgnoreCase);
+                string name = tbFirstName.Text.Trim().ToLower();
+                string surname = tbSecondName.Text.Trim().ToLower();
+
+                if (reg.IsMatch(name) && reg.IsMatch(surname)
+                    && name.Length > 1 && surname.Length > 1)
+                {
+                    name = FormatName(name);
+                    surname = FormatName(surname);
+                    if (!String.IsNullOrWhiteSpace(tbLogin.Text) && mtbPhone.MaskCompleted)
+                    {
+                        try
+                        {
+                            if (DAL.AddClient(name, surname, tbLogin.Text,
+                                Convert.ToInt32(nudBonuses.Value), mtbPhone.Text))
+                            {
+                                MessageBox.Show("Пользователь добавлен");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Пользователь уже существует");
+                                e.Cancel = true;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            e.Cancel = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введите логин и номер телефона");
+                        e.Cancel = true;
+                    }
+                }
+                else
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Имя и фамлия должны быть введены на русском языке");
+                }
+            }
         }
     }
 }

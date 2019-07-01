@@ -40,25 +40,32 @@ namespace Carcas_Kursacha
 
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form f = new TableForm(DAL.user == "manager" ? "UsersOrders" :
-                "GetUserOrders(" + DAL.idUser + ")" );
-            f.Text = "Заказы";
-            f.MdiParent = this;
-            f.Show();
+            if (!FormOpen("Заказы"))
+            {
+                Form f = new TableForm((DAL.user == "manager" ? "UsersOrders" :
+                "GetUserOrders(" + DAL.idUser + ")"));
+                f.Text = "Заказы";
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void MenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form f = new TableForm("ShortMenu");
-            f.Text = "Меню";
-            f.MdiParent = this;
-            f.Show();
+            if (!FormOpen("Меню"))
+            {
+                Form f = new TableForm("ShortMenu");
+                f.Text = "Меню";
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void ChangeSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form f = new SettingsForm();
             f.Text = "Настройки";
+
             f.ShowDialog();
         }
 
@@ -94,42 +101,68 @@ namespace Carcas_Kursacha
         }
 
 
-        private void queryToDBToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnQueryToDB_Click(object sender, EventArgs e)
         {
-            Form f = new QueryForm();
-            f.Text = "Запросы к БД";
-            f.ShowDialog();
+            if (!FormOpen("Запросы к БД"))
+            {
+                Form f = new QueryForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+
         }
 
-        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnClients_Click(object sender, EventArgs e)
         {
-            Form f = new TableForm("ClientsInfo");
-            f.Text = "Клиенты";
-            f.MdiParent = this;
-            f.Show();
+            if (!FormOpen("Клиенты"))
+            {
+                Form f = new TableForm("ClientsInfo");
+                f.Text = "Клиенты";
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnNewClient_Click(object sender, EventArgs e)
         {
             Form f = new UserForm();
-            f.MdiParent = this;
-            f.Show();
+            f.ShowDialog();
         }
 
         private void btnNewOrder_Click(object sender, EventArgs e)
         {
-            Form f = new OrderForm();
-            f.Text = "Новый заказ";
-            f.MdiParent = this;
-            f.Show();
+            if (!FormOpen("Новый заказ"))
+            {
+                Form f = new OrderForm();
+                f.Text = "Новый заказ";
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
-        private void новоеСпецпредложениеToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnNewOffer_Click(object sender, EventArgs e)
         {
-            Form f = new TableForm("AvailableOffers");
-            f.Text = "Активные спец предложения";
-            f.MdiParent = this;
-            f.Show();
+            if (!FormOpen("Спецпредложения"))
+            {
+                Form f = new TableForm("AvailableOffers");
+                f.Text = "Спецпредложения";
+                f.MdiParent = this;
+                f.Show();
+            }
         }
+
+        private bool FormOpen(string formName)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.Text == formName)
+                {
+                    f.Activate();
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }

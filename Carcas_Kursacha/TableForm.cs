@@ -31,13 +31,10 @@ namespace Carcas_Kursacha
         private void TableForm_Load(object sender, EventArgs e)
         {
             dt = DAL.GetTable(tableName);
-            System.Data.SqlClient.SqlDataAdapter da =
-                new System.Data.SqlClient.SqlDataAdapter("SELECT * FROM " + tableName, DAL.ConnString);
-            da.Fill(ds);
 
             bs.DataSource = dt;
 
-            dgv.DataSource = ds.Tables[0];
+            dgv.DataSource = dt;
             bn.BindingSource = bs;
             dgv.Columns[0].Visible = false;
             if (tableName == "AvailableOffers")
@@ -45,31 +42,48 @@ namespace Carcas_Kursacha
                 dgv.ReadOnly = false;
                 dgv.AllowUserToAddRows = true;
                 dgv.AllowUserToDeleteRows = true;
+                btnSave.Visible = true;
             }
         }
 
+        /// <summary>
+        /// Метод экспорта данных из таблицы в CSV файл
+        /// </summary>
+        /// <returns>CSV строка</returns>
         private string DataGridToCSV()
         {
+            //Создает конструктор строки
             StringBuilder sb = new StringBuilder();
+            //Циклом заносит в первую строку названия столбцов
             for (int i = 0; i < dgv.ColumnCount; i++)
                 sb.Append(dgv.Columns[i].HeaderText + ";");
+            //Отделяет заголовки от строк
             sb.AppendLine();
-
+            //Заносит данные из таблицы в строку
             for (int i = 0; i < dgv.RowCount; i++)
             {
                 for (int j = 0; j < dgv.ColumnCount; j++)
                 {
+                    //разделяя столбцы точкой с запятой
                     sb.Append(dgv[j, i].Value + ";");
                 }
                 sb.AppendLine();
             }
+            //Возвращает строку содержащую таблицу в CSV формате
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Формирует строку с HTML таблицей
+        /// </summary>
+        /// <returns>HTML строка</returns>
         private string DataGridToHTML()
         {
+            //Создает конструктор строки
             StringBuilder sb = new StringBuilder();
+            //Заносит HTML разметку в строку
             sb.AppendLine("<html><body><center><table border = '1' cellspasing = '0'>");
+            //Создает строку HTML - таблицы с заголовками таблицы
             sb.AppendLine("<tr>");
             for (int i = 0; i < dgv.ColumnCount; i++)
             {
@@ -77,7 +91,7 @@ namespace Carcas_Kursacha
                     + dgv.Columns[i].HeaderText + "</th>");
             }
             sb.AppendLine("</tr>");
-
+            //Заполняет таблицу данными
             for (int i = 0; i < dgv.RowCount - 1; i++)
             {
                 sb.AppendLine("<tr>");
@@ -88,21 +102,30 @@ namespace Carcas_Kursacha
             sb.AppendLine("<caption align = 'bottom'><br>Table: " +
                 tableName + "</caption>");
             sb.AppendLine("</table></center></body></html>");
+            //Возвращает строку содержащую таблицу в HTML формате
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Записывает данные из таблицы в XML формат
+        /// </summary>
+        /// <param name="path">путь к файлу</param>
         private void DataGridToXML(string path)
         {
+            //Записывает текущее содержимое таблицы DataTable в формате XML
             dt.WriteXml(path, XmlWriteMode.IgnoreSchema);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            //Создает диалоговое окно для сохранения
             SaveFileDialog sfd = new SaveFileDialog();
+            //устанавливает фильтры на сохранение
             sfd.Filter = "В CSV файл (*.csv)|*.csv|В HTML файл (*.HTML)|*.html|В XML файл (*.xml)|*.xml";
-
+            //Если не произошла отмена сохранения, то
             if (sfd.ShowDialog() != DialogResult.Cancel)
             {
+                //Выбор метода на сохранение
                 switch (sfd.FilterIndex)
                 {
                     case 1:
@@ -115,16 +138,26 @@ namespace Carcas_Kursacha
                         DataGridToXML(sfd.FileName);
                         break;
                 }
+                //Сообщение об успешном сохранении
                 MessageBox.Show("Данные успешно экспортированны");
             }
         }
 
-        private void TableForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void TsbtnSave_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.bs.EndEdit();
             if (tableName == "AvailableOffers")
-                DAL.UpdateTable(ds);
+                DAL.UpdateTable(false, dt);
+        }
+
+
+        private void btnUpd_Click(object sender, EventArgs e)
+        {
+            DAL.UpdateTable(true, dt);
+        }
+
+        private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Введите цифры");
         }
     }
 }

@@ -115,12 +115,14 @@ namespace Carcas_Kursacha
                             DAL.AddOrderItem(Offer, idOrder, "OfferInOrder");
                         CreateDocument(
                         Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                            "\\Заказ_" + idOrder + ".docx",
+                            @"\Чеки\Заказ_" + idOrder + ".docx",
                         idOrder, Bonus);
+                        MessageBox.Show("Заказ успешно оформлен");
                     }
                     else
                     {
                         MessageBox.Show("Пользователь не найден");
+                        e.Cancel = true;
                     }
                 }
                 else
@@ -138,7 +140,8 @@ namespace Carcas_Kursacha
         {
             try
             {
-                string patternName = @"..\..\Resources\Sample.docx";
+                string patternName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + 
+                    @"\Чеки\Sample.docx";
 
                 File.Copy(patternName, fileName.ToString(), true);
                 Word.Application word = new Word.Application();

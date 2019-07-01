@@ -44,19 +44,19 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.tbComp = new System.Windows.Forms.TextBox();
             this.bn = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bnPosItem = new System.Windows.Forms.ToolStripTextBox();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCheckOrder = new System.Windows.Forms.ToolStripButton();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
-            this.tbComp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -77,7 +77,7 @@
             this.dgv.Location = new System.Drawing.Point(3, 161);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
-            this.dgv.Size = new System.Drawing.Size(534, 153);
+            this.dgv.Size = new System.Drawing.Size(570, 130);
             this.dgv.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -92,7 +92,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(540, 317);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(576, 294);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -119,7 +119,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(534, 152);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(570, 152);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // label1
@@ -135,7 +135,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(95, 0);
+            this.lblName.Location = new System.Drawing.Point(102, 0);
             this.lblName.Name = "lblName";
             this.lblName.Padding = new System.Windows.Forms.Padding(0, 2, 0, 8);
             this.lblName.Size = new System.Drawing.Size(56, 23);
@@ -155,7 +155,7 @@
             // lblComposit
             // 
             this.lblComposit.AutoSize = true;
-            this.lblComposit.Location = new System.Drawing.Point(95, 23);
+            this.lblComposit.Location = new System.Drawing.Point(102, 23);
             this.lblComposit.Name = "lblComposit";
             this.lblComposit.Padding = new System.Windows.Forms.Padding(0, 2, 0, 8);
             this.lblComposit.Size = new System.Drawing.Size(80, 23);
@@ -175,7 +175,7 @@
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(95, 46);
+            this.lblPrice.Location = new System.Drawing.Point(102, 46);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Padding = new System.Windows.Forms.Padding(0, 2, 0, 8);
             this.lblPrice.Size = new System.Drawing.Size(48, 23);
@@ -190,11 +190,11 @@
             this.tableLayoutPanel3.Controls.Add(this.nudCount, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnAdd, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(95, 72);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(102, 72);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(436, 24);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(465, 24);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // nudCount
@@ -202,7 +202,7 @@
             this.nudCount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nudCount.Location = new System.Drawing.Point(3, 3);
             this.nudCount.Name = "nudCount";
-            this.nudCount.Size = new System.Drawing.Size(212, 20);
+            this.nudCount.Size = new System.Drawing.Size(226, 20);
             this.nudCount.TabIndex = 0;
             this.nudCount.Value = new decimal(new int[] {
             1,
@@ -213,9 +213,9 @@
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdd.Location = new System.Drawing.Point(221, 3);
+            this.btnAdd.Location = new System.Drawing.Point(235, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(212, 18);
+            this.btnAdd.Size = new System.Drawing.Size(227, 18);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Добавить в заказ";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -241,6 +241,16 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Заказ:";
             // 
+            // tbComp
+            // 
+            this.tbComp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbComp.Location = new System.Drawing.Point(102, 102);
+            this.tbComp.Multiline = true;
+            this.tbComp.Name = "tbComp";
+            this.tbComp.ReadOnly = true;
+            this.tbComp.Size = new System.Drawing.Size(465, 47);
+            this.tbComp.TabIndex = 10;
+            // 
             // bn
             // 
             this.bn.AddNewItem = null;
@@ -264,7 +274,7 @@
             this.bn.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bn.Name = "bn";
             this.bn.PositionItem = this.bnPosItem;
-            this.bn.Size = new System.Drawing.Size(540, 25);
+            this.bn.Size = new System.Drawing.Size(576, 25);
             this.bn.TabIndex = 2;
             this.bn.Text = "bindingNavigator1";
             // 
@@ -274,24 +284,6 @@
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
             this.bindingNavigatorCountItem.Text = "для {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
             // bindingNavigatorSeparator
             // 
@@ -313,6 +305,29 @@
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
+            // 
             // bindingNavigatorMoveNextItem
             // 
             this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -331,11 +346,6 @@
             this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
             // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnCheckOrder
             // 
             this.btnCheckOrder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -345,17 +355,7 @@
             this.btnCheckOrder.Name = "btnCheckOrder";
             this.btnCheckOrder.Size = new System.Drawing.Size(101, 22);
             this.btnCheckOrder.Text = "Оформить заказ";
-            this.btnCheckOrder.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // tbComp
-            // 
-            this.tbComp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbComp.Location = new System.Drawing.Point(95, 102);
-            this.tbComp.Multiline = true;
-            this.tbComp.Name = "tbComp";
-            this.tbComp.ReadOnly = true;
-            this.tbComp.Size = new System.Drawing.Size(436, 47);
-            this.tbComp.TabIndex = 10;
+            this.btnCheckOrder.Click += new System.EventHandler(this.CheckOrdbtn_Click);
             // 
             // OrderForm
             // 
@@ -363,12 +363,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(540, 342);
+            this.ClientSize = new System.Drawing.Size(576, 319);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "OrderForm";
-            this.ShowIcon = false;
             this.Text = "Оформление заказа";
             this.Load += new System.EventHandler(this.ProfileForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

@@ -63,9 +63,19 @@ namespace Carcas_Kursacha.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _4kaeyI {
+        internal static System.Drawing.Bitmap coffee {
             get {
-                object obj = ResourceManager.GetObject("4kaeyI", resourceCulture);
+                object obj = ResourceManager.GetObject("coffee", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zerna {
+            get {
+                object obj = ResourceManager.GetObject("zerna", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
